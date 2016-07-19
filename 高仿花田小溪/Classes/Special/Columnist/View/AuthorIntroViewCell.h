@@ -1,0 +1,14 @@
+//
+//  AuthorIntroViewCell.h
+//  高仿花田小憩OC版
+//
+//  Created by 祥云创想 on 16/6/30.
+//  Copyright © 2016年 Lee. All rights reserved.
+//
+
+#import "UserParentViewCell.h"
+
+@interface AuthorIntroViewCell : UserParentViewCell
+
+
+@end
