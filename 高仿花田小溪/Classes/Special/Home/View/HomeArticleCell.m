@@ -1,6 +1,6 @@
 //
 //  HomeArticleCell.m
-//  高仿花田小憩OC版
+//  高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi
 //
 //  Created by 祥云创想 on 16/6/25.
 //  Copyright © 2016年 Lee. All rights reserved.
@@ -88,7 +88,7 @@ DIYObj_(ToolBottomView, bottomView)
     if (!_authorLabel) {
         _authorLabel = [UILabel new];
         _authorLabel.font = [UIFont fontWithName:@"CODE LIGHT" size:14];
-        _authorLabel.text = @"花田小憩OC版";
+        _authorLabel.text = @"花田小憩OC版  github :https://github.com/leeSmile/xiaoqi";
         [self.contentView addSubview:_authorLabel];
         [_authorLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.headImgView.mas_left).offset(-10);

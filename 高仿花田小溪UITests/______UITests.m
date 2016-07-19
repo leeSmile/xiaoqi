@@ -1,6 +1,6 @@
 //
 //  ______UITests.m
-//  高仿花田小憩OC版UITests
+//  高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqiUITests
 //
 //  Created by Lee on 16/6/23.
 //  Copyright © 2016年 Lee. All rights reserved.

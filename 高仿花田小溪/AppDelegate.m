@@ -1,7 +1,7 @@
 //
 //  AppDelegate.m
-//  高仿花田小憩OC版
-//
+//  高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi
+//  QQ技术交流：244645877
 //  Created by Lee on 16/6/23.
 //  Copyright © 2016年 Lee. All rights reserved.
 //

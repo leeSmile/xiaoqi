@@ -1,6 +1,6 @@
 //
 //  TopAuthorCell.m
-//  高仿花田小憩OC版
+//  高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi
 //
 //  Created by Lee on 16/6/26.
 //  Copyright © 2016年 Lee. All rights reserved.
@@ -97,7 +97,7 @@ Label_(authorLabel)
     if (!_authorLabel) {
         _authorLabel = [UILabel new];
         _authorLabel.font = [UIFont fontWithName:@"CODE LIGHT" size:14.0];
-        _authorLabel.text = @"花田小憩OC版";
+        _authorLabel.text = @"花田小憩OC版  github :https://github.com/leeSmile/xiaoqi";
     }
     return _authorLabel;
 }

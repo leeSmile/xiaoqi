@@ -1,6 +1,6 @@
 //
 //  MallsGoods.h
-//  高仿花田小憩OC版
+//  高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi
 //
 //  Created by Lee on 16/7/9.
 //  Copyright © 2016年 Lee. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  LoginHeaderView.m
-//  高仿花田小憩OC版
+//  高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi
 //
 //  Created by 祥云创想 on 16/7/15.
 //  Copyright © 2016年 Lee. All rights reserved.
@@ -217,9 +217,9 @@ Label_(serviceTermLabel)// 服务条款
         _serviceTermLabel.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
         
         //设置下划线
-        NSString *originStr = @"注册即表示我同意 花田小憩OC版服务条款 内容";
+        NSString *originStr = @"注册即表示我同意 花田小憩OC版  github :https://github.com/leeSmile/xiaoqi服务条款 内容";
         NSMutableAttributedString *attrstr = [[NSMutableAttributedString alloc] initWithString:originStr];
-        NSRange range = [originStr rangeOfString:@"花田小憩OC版服务条款"];
+        NSRange range = [originStr rangeOfString:@"花田小憩OC版  github :https://github.com/leeSmile/xiaoqi服务条款"];
         [attrstr addAttributes:@{NSUnderlineStyleAttributeName:@(NSUnderlineStyleSingle)} range:range];
         
         _serviceTermLabel.attributedText = attrstr;
