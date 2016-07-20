@@ -4,7 +4,7 @@
 //
 //  Created by Lee on 16/6/23.
 //  Copyright © 2016年 Lee. All rights reserved.
-///Users/xiangyunchuangxiang/Desktop/高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi/高仿花田小憩OC版  github :https://github.com/leeSmile/xiaoqi/Config/PrefixHeader.pch
+
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
