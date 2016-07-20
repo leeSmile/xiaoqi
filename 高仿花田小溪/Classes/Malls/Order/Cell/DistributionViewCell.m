@@ -4,7 +4,7 @@
 //
 //  Created by Lee on 16/7/18.
 //  Copyright © 2016年 Lee. All rights reserved.
-//
+//  思路：事先已经在cell中添加好所有的子控件，设置，默认显示
 
 #import "DistributionViewCell.h"
 #import "PlaceHolderTextView.h"
@@ -44,21 +44,26 @@ BOOL_(isAddAddress)//是否已经添加了地址
 - (void)setupUI
 {
     self.isAddAddress = NO;
+    
+    //默认显示
     [self.contentView addSubview:self.anonymousCheckBox];
     [self.contentView addSubview:self.anonymousLabel];
     [self.contentView addSubview:self.invoiceLabel];
     [self.contentView addSubview:self.invoiceCheckBox];
+    
+    //点击需要发票后  第一次显示的控件  默认隐藏
     [self.contentView addSubview:self.invoiceMessageView];
     [self.contentView addSubview:self.localView];
     [self.contentView addSubview:self.addressLabel];
- 
-    //选中地址后需要显示的VIEW
+    
+    //点击选中地址后需要显示的VIEW   默认隐藏
     [self.contentView addSubview:self.otherLocalView];
     [self.contentView addSubview:self.otherAddressLabel];
     [self.contentView addSubview:self.nameLabel];
     [self.contentView addSubview:self.phoneLabel];
     [self.contentView addSubview:self.gotoIcon];
     
+    //添加在最上面的透明btn ，响应点击事件
     [self.contentView addSubview:self.clickBtn];
     
     //约束
@@ -72,12 +77,12 @@ BOOL_(isAddAddress)//是否已经添加了地址
         make.left.equalTo(self.contentView).offset(45);
         make.right.equalTo(self.contentView).offset(-20);
     }];
-
+    
     [self.invoiceCheckBox mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.anonymousCheckBox);
         make.top.equalTo(self.anonymousCheckBox.mas_bottom).offset(20);
     }];
-
+    
     
     [self.invoiceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.anonymousLabel);
@@ -136,7 +141,7 @@ BOOL_(isAddAddress)//是否已经添加了地址
         make.right.equalTo(self.contentView).offset(-50);
         make.size.mas_equalTo(CGSizeMake(16, 20));
     }];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addressChange:) name:InvoiceAddressChangeNotifyKey object:nil];
 }
 #pragma mark - UITextViewDelegate
@@ -219,54 +224,13 @@ BOOL_(isAddAddress)//是否已经添加了地址
     }
     return _addressLabel;
 }
-- (void)setIsNeedInvoice:(BOOL)isNeedInvoice
-{
-    _isNeedInvoice = isNeedInvoice;
-    if (!isNeedInvoice) {
-        self.invoiceMessageView.hidden = YES;
-        self.localView.hidden = YES;
-        self.addressLabel.hidden = YES;
-        self.clickBtn.hidden = YES;
-        
-        self.nameLabel.hidden = YES;
-        self.phoneLabel.hidden = YES;
-        self.otherAddressLabel.hidden = YES;
-        self.otherLocalView.hidden = YES;
-        self.gotoIcon.hidden = YES;
-    }else
-    {
-        
-        if (self.isAddAddress) {//做一个判断
-            self.nameLabel.hidden = NO;
-            self.phoneLabel.hidden = NO;
-            self.otherAddressLabel.hidden = NO;
-            self.otherLocalView.hidden = NO;
-            self.gotoIcon.hidden = NO;
-            
-            self.invoiceMessageView.hidden = YES;
-            self.localView.hidden = YES;
-            self.addressLabel.hidden = YES;
-        }else
-        {
-            
-            self.localView.hidden = NO;
-            self.addressLabel.hidden = NO;
-            
-            self.nameLabel.hidden = YES;
-            self.phoneLabel.hidden = YES;
-            self.otherAddressLabel.hidden = YES;
-            self.otherLocalView.hidden = YES;
-            self.gotoIcon.hidden = YES;
-        }
-        self.invoiceMessageView.hidden = NO;
-        self.clickBtn.hidden = NO;
-    }
-}
+
+
 - (UIButton *)clickBtn
 {
     if (!_clickBtn) {
         _clickBtn = [UIButton new];
-
+        
         _clickBtn.backgroundColor = [UIColor clearColor];
         [_clickBtn addTarget:self action:@selector(clickAddAddress) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -289,7 +253,7 @@ BOOL_(isAddAddress)//是否已经添加了地址
         _otherAddressLabel = [UILabel new];
         _otherAddressLabel.font = [UIFont fontWithName:@"CODE LIGHT" size:12];
         _otherAddressLabel.textColor = [UIColor blackColor];
-//        _otherAddressLabel.text = @"请填写您的收货地址";
+        //        _otherAddressLabel.text = @"请填写您的收货地址";
     }
     return _otherAddressLabel;
 }
@@ -322,6 +286,54 @@ BOOL_(isAddAddress)//是否已经添加了地址
     }
     return _gotoIcon;
 }
+
+//是否需要发票
+- (void)setIsNeedInvoice:(BOOL)isNeedInvoice
+{
+    _isNeedInvoice = isNeedInvoice;
+    
+    if (!isNeedInvoice) {//如果不需要发票
+        self.invoiceMessageView.hidden = YES;
+        self.localView.hidden = YES;
+        self.addressLabel.hidden = YES;
+        self.clickBtn.hidden = YES;
+        
+        self.nameLabel.hidden = YES;
+        self.phoneLabel.hidden = YES;
+        self.otherAddressLabel.hidden = YES;
+        self.otherLocalView.hidden = YES;
+        self.gotoIcon.hidden = YES;
+    }else
+    {//需要发票     点击需要发票后，也要进行一次判断，是否点击过添加地址
+        
+        if (self.isAddAddress) {//点击添加发票地址后
+            self.nameLabel.hidden = NO;
+            self.phoneLabel.hidden = NO;
+            self.otherAddressLabel.hidden = NO;
+            self.otherLocalView.hidden = NO;
+            self.gotoIcon.hidden = NO;
+            
+            self.invoiceMessageView.hidden = YES;
+            self.localView.hidden = YES;
+            self.addressLabel.hidden = YES;
+        }else
+        {
+            
+            self.localView.hidden = NO;
+            self.addressLabel.hidden = NO;
+            
+            self.nameLabel.hidden = YES;
+            self.phoneLabel.hidden = YES;
+            self.otherAddressLabel.hidden = YES;
+            self.otherLocalView.hidden = YES;
+            self.gotoIcon.hidden = YES;
+        }
+        
+        self.invoiceMessageView.hidden = NO;
+        self.clickBtn.hidden = NO;
+    }
+}
+
 #pragma mark -click
 - (void)checkit:(UIButton *)btn
 {
@@ -339,7 +351,7 @@ BOOL_(isAddAddress)//是否已经添加了地址
 }
 - (void)clickAddAddress
 {
-
+    
     if ([self.delegate respondsToSelector:@selector(DistributionViewCellAddAddress)]) {
         [self.delegate DistributionViewCellAddAddress];
     }
